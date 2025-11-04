@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.safetensors filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+.ckpt filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+tokenizer/*.model filter=lfs diff=lfs merge=lfs -text
+tokenizer/*.vocab filter=lfs diff=lfs merge=lfs -text
+*.spm filter=lfs diff=lfs merge=lfs -text
