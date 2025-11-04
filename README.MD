@@ -14,9 +14,7 @@ kat-ge_web_2019_1M-sentences.txt
 
 Put them under data/raw
 
-3.download tokenizer and model checkpoint from Aurelianous/GeoGPTnano,put model to src/models, tokenizer to /tokenizer
-
-4.run python -m src.train --config configs/train_small.yaml --resume best_step8000_val3.862.pt to train.
+3.run python -m src.train --config configs/train_small.yaml --resume best_step8000_val3.862.pt to train.
 
 ## Full Train
 1.Clone the repo
