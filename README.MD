@@ -14,7 +14,7 @@ kat-ge_web_2019_1M-sentences.txt
 
 Put them under data/raw
 
-3.download tokenizer and model from Aurelianous/GeoGPTnano,put model to src/models, tokenizer to /tokenizer
+3.download tokenizer and model checkpoint from Aurelianous/GeoGPTnano,put model to src/models, tokenizer to /tokenizer
 
 4.run python -m src.train --config configs/train_small.yaml --resume best_step8000_val3.862.pt to train.
 
@@ -73,6 +73,12 @@ Put them under data/raw
 ## Tokenizer
 In the notebooks\data_analysis.ipynb I tried 3 tokenizers with different sizes. Though the 32k ver. may contain more words, it may cost too much and not worthy for our model.
 
+[16000] -> {'lines': 20609, 'avg_subwords_per_sent': 25.894609151341648, 'p50': 23.0, 'p90': 42.0, 'p99': 64.0, 'tokens_per_char': 0.228380709549835}
+
+[24000] -> {'lines': 20609, 'avg_subwords_per_sent': 24.459265369498763, 'p50': 22.0, 'p90': 39.0, 'p99': 60.0, 'tokens_per_char': 0.2157215174597224}
+
+[32000] -> {'lines': 20609, 'avg_subwords_per_sent': 23.61895288466204, 'p50': 21.0, 'p90': 38.0, 'p99': 58.0, 'tokens_per_char': 0.20831027752136433}
+
 ## Model
 
 * **Type:** decoder-only Transformer (RMSNorm, RoPE, GELU, weight tying)
@@ -123,7 +129,7 @@ In the notebooks\data_analysis.ipynb I tried 3 tokenizers with different sizes. 
 * **CPU:** always uses masked softmax path
 * **Checkpointing:** RoPE caches are non-persistent; weight shapes unchanged across the new toggles
 
-## Training Process
+## Training Process(my bad to not have recorded the train log)
 1.Started with **lr=1.5e-3**,The training process was smooth before the **step 2500**, then it came to an overfitting stage which I then stopped to avoid.
 2.Continued from the checkpoint-2500, this time with dropout_train=0.10, and the learning rate reduced to half **lr=7.5e-4**. This time the val_loss reduced to around 3.90 , maintained a ~0.4 difference with train_loss.
 3.Then from step 6050 enabled the swa with swa_freq=500 and swa_lr = 5e-4 to try to let the model converge better, and it did, val_loss reduced to **~3.86**
@@ -132,6 +138,10 @@ In the notebooks\data_analysis.ipynb I tried 3 tokenizers with different sizes. 
 ## Model Evaluation
 to see clearly, please see the eval.ipynb, I tried a little smoke test there.
 The model works relatively poor still on the basic questions, yet the text consistency(around 60%) is acceptable for so-far training and such a "tiny" model with 50M parameters.
+For SWA comparison, in the same notebook I tried with checkpoint-6000(best before SWA), and checkpoint-8000(best after SWA), it turns out that basically 8000 model won the consistency(by 0.2) and ask-answer section(often answers 2-3 ok, 6000 only 1).
+
+## Enviroment
+Trained on my 4070TIS, lasted about 4 hours from 0 to step 8000.
 
 ## Access
 To access the model trained, please visit Aurelianous/GeoGPTnano on Huggingface to download the best checkpoint so far
