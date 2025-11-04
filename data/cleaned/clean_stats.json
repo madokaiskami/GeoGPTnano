@@ -1,0 +1,45 @@
+{
+  "per_file": {
+    "data\\raw\\kat-ge_web_2019_1M-sentences.txt": {
+      "raw_lines": 1000000,
+      "kept": 979433
+    },
+    "data\\raw\\kat_news_2020_100K-sentences.txt": {
+      "raw_lines": 100000,
+      "kept": 99469
+    },
+    "data\\raw\\kat_newscrawl_2016_1M-sentences.txt": {
+      "raw_lines": 1000000,
+      "kept": 982041
+    }
+  },
+  "total_raw_lines": 2100000,
+  "kept_lines": 2060943,
+  "dropped": {
+    "too_short": 35,
+    "too_numeric": 14,
+    "low_geo_ratio": 27974,
+    "empty_after_clean": 0
+  },
+  "dedup_removed": 11034,
+  "near_dedup_removed": 0,
+  "stripped_leading_lineno": 2100000,
+  "config": {
+    "min_chars": 15,
+    "max_digits_ratio": 0.4,
+    "min_georgian_ratio": 0.85,
+    "deduplicate": true,
+    "strip_leading_lineno": true,
+    "near_dedupe": {
+      "enabled": false,
+      "jaccard_threshold": 0.9,
+      "ngram": 5,
+      "bucket_prefix_len": 16
+    }
+  },
+  "split_counts": {
+    "train": 2019724,
+    "val": 20609,
+    "test": 20610
+  }
+}

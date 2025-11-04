@@ -1,0 +1,21 @@
+tokenizer:
+  algo: "unigram"            
+  vocab_size: 24000
+  character_coverage: 0.9995
+  model_prefix: "tokenizer/ka_sp_24000"
+  model_file: "tokenizer/ka_sp_24000.model"
+
+  special_ids:
+    unk_id: 0
+    bos_id: 1
+    eos_id: 2
+    pad_id: -1             
+
+  train_input: "data/splits/train.txt"
+  eval_ref: "data/splits/val.txt"
+  eval_max_lines: 50000
+
+  # 训练采样与并行
+  input_sentence_size: 2000000
+  shuffle_input_sentence: true
+  num_threads: 4

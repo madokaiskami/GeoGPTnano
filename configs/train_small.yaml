@@ -1,0 +1,52 @@
+train:
+  # -------- I/O --------
+  sp_model: "tokenizer/ka_sp_24000.model"
+  train_txt: "data/splits/train.txt"
+  val_txt:   "data/splits/val.txt"
+  bin_dir:   "data/splits/bin"
+  ckpt_dir:  "checkpoints"
+
+  # -------- Model --------
+  vocab_size: 24000
+  n_layer: 12
+  n_head: 8
+  d_model: 512
+  n_ctx: 512
+  ffn_mult: 4
+  dropout: 0.0
+  rope_theta: 10000.0
+  tie_weights: true
+  bias: false
+
+  use_sdpa: true           #SDPA
+  grad_checkpoint: false   
+
+  # -------- Train --------
+  batch_size: 32
+  grad_accum_steps: 16      
+  lr: 7.5e-4 #0.0015
+  min_lr: 7.5e-5 #0.00015
+  weight_decay: 0.15
+  betas: [0.9, 0.95]
+  grad_clip: 1.0
+  dropout_train: 0.10
+
+  warmup_steps: 2000
+  max_steps: 20000
+  eval_every: 500
+  save_every: 2000
+  eval_batches: 100
+  seed: 1337
+  amp: true
+  compile: false
+
+
+  use_swa: true   
+  swa_start: 6050
+  swa_freq: 200
+  swa_lr: 4e-4
+
+
+  device: "cuda"
+  dtype: "bfloat16"       
+

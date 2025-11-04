@@ -1,0 +1,37 @@
+project_root: "."
+
+paths:
+  raw_dir: "data/raw"
+  cleaned_dir: "data/cleaned"
+  splits_dir: "data/splits"
+
+outputs:
+  cleaned_merged: "data/cleaned/ka_cleaned.txt"
+  stats_path: "data/cleaned/clean_stats.json"
+
+split:
+  train_ratio: 0.98
+  val_ratio: 0.01
+  test_ratio: 0.01
+  seed: 1337
+  shuffle_before_split: true
+
+cleaning:
+  strip_leading_lineno: true   
+  normalize: "NFKC"         # Unicode normalization form
+  lowercase: false          # Set true if you want to lowercase everything
+  strip_html: true
+  strip_urls: true
+  min_chars: 15             # Drop very short lines
+  max_digits_ratio: 0.40    # Drop if digits / total_chars exceeds this
+  min_georgian_ratio: 0.85  # Keep lines with >= this ratio of Georgian letters
+
+  deduplicate: true         # Exact dedup (line-level)
+  near_dedupe:
+    enabled: false          # Lightweight near-dup; off by default
+    jaccard_threshold: 0.90 # Token 5-gram Jaccard threshold
+    ngram: 5
+    bucket_prefix_len: 16
+
+  append_eos: true
+  eos_token: "<eos>"
