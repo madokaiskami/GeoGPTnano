@@ -20,13 +20,21 @@ Put them under data/raw
 
 ## Full Train
 1.Clone the repo
+
 2.Visit https://wortschatz-leipzig.de/en/download/kat#kat-ge_web_2019 and download following:
+
 kat_news_2020_100K-sentences.txt
+
 kat_newscrawl_2016_1M-sentences.txt
+
 kat-ge_web_2019_1M-sentences.txt
+
 Put them under data/raw
+
 3.run python.exe src/00_data_process.py --config configs/data.yaml to clean and split txt.
+
 4.run python.exe src/01_tokenizer.py --config configs/tokenizer.yaml to generate tokenizer.
+
 5.run python.exe src/train.py --config configs/train_smaill.yaml to train.
 
 ## Dataset
