@@ -1,5 +1,27 @@
 # GEOGPTnano - A course GPT 
 This GPT is a inspired by https://github.com/karpathy/nanoGPT.git and https://github.com/jbxamora/reversenanogpt.git
+
+## Quick Start
+1.Clone the repo
+2.Visit https://wortschatz-leipzig.de/en/download/kat#kat-ge_web_2019 and download following:
+kat_news_2020_100K-sentences.txt
+kat_newscrawl_2016_1M-sentences.txt
+kat-ge_web_2019_1M-sentences.txt
+Put them under data/raw
+3.download tokenizer and model from Aurelianous/GeoGPTnano,put model to src/models, tokenizer to /tokenizer
+4.run python -m src.train --config configs/train_small.yaml --resume best_step8000_val3.862.pt to train.
+
+## Full Train
+1.Clone the repo
+2.Visit https://wortschatz-leipzig.de/en/download/kat#kat-ge_web_2019 and download following:
+kat_news_2020_100K-sentences.txt
+kat_newscrawl_2016_1M-sentences.txt
+kat-ge_web_2019_1M-sentences.txt
+Put them under data/raw
+3.run python.exe src/00_data_process.py --config configs/data.yaml to clean and split txt.
+4.run python.exe src/01_tokenizer.py --config configs/tokenizer.yaml to generate tokenizer.
+5.run python.exe src/train.py --config configs/train_smaill.yaml to train.
+
 ## Dataset
 
 * **Source:** Leipzig Corpora Collection — Georgian parts
