@@ -72,6 +72,9 @@ Put them under data/raw
 
 ## Tokenizer
 In the notebooks\data_analysis.ipynb I tried 3 tokenizers with different sizes. Though the 32k ver. may contain more words, it may cost too much and not worthy for our model.
+[16000] -> {'lines': 20609, 'avg_subwords_per_sent': 25.894609151341648, 'p50': 23.0, 'p90': 42.0, 'p99': 64.0, 'tokens_per_char': 0.228380709549835}
+[24000] -> {'lines': 20609, 'avg_subwords_per_sent': 24.459265369498763, 'p50': 22.0, 'p90': 39.0, 'p99': 60.0, 'tokens_per_char': 0.2157215174597224}
+[32000] -> {'lines': 20609, 'avg_subwords_per_sent': 23.61895288466204, 'p50': 21.0, 'p90': 38.0, 'p99': 58.0, 'tokens_per_char': 0.20831027752136433}
 
 ## Model
 
