@@ -3,12 +3,19 @@ This GPT is a inspired by https://github.com/karpathy/nanoGPT.git and https://gi
 
 ## Quick Start
 1.Clone the repo
+
 2.Visit https://wortschatz-leipzig.de/en/download/kat#kat-ge_web_2019 and download following:
+
 kat_news_2020_100K-sentences.txt
+
 kat_newscrawl_2016_1M-sentences.txt
+
 kat-ge_web_2019_1M-sentences.txt
+
 Put them under data/raw
+
 3.download tokenizer and model from Aurelianous/GeoGPTnano,put model to src/models, tokenizer to /tokenizer
+
 4.run python -m src.train --config configs/train_small.yaml --resume best_step8000_val3.862.pt to train.
 
 ## Full Train
