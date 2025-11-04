@@ -95,3 +95,6 @@ In the notebooks\data_analysis.ipynb I tried 3 tokenizers with different sizes. 
 ## Model Evaluation
 to see clearly, please see the eval.ipynb, I tried a little smoke test there.
 The model works relatively poor still on the basic questions, yet the text consistency(around 60%) is acceptable for so-far training and such a "tiny" model with 50M parameters.
+
+## Access
+To access the model trained, please visit Aurelianous/GeoGPTnano on Huggingface to download the best checkpoint so far
